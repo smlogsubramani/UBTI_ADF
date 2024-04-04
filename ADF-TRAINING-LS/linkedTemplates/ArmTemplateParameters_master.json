@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "ADF-TRAINING-LS"
+		},
+		"ADFSERVER_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"TASK3BLOBSTORAGE_connectionString": {
+			"value": ""
+		},
+		"logasqldb_connectionString": {
+			"value": ""
+		},
+		"restservicetest_properties_typeProperties_url": {
+			"value": "https://reqres.in/api/users"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
