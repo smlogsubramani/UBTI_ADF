@@ -1,0 +1,6 @@
+{
+	"name": "logaintegrationruntime",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}

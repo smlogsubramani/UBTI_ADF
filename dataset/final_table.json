@@ -1,0 +1,17 @@
+{
+	"name": "final_table",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "logasqldb",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "loga",
+			"table": "dataflow"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

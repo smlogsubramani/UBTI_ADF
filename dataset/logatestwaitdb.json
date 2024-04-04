@@ -1,0 +1,17 @@
+{
+	"name": "logatestwaitdb",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "logasqldb",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "loga",
+			"table": "Employee1"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
