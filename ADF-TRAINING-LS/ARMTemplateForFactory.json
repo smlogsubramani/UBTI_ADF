@@ -1128,7 +1128,7 @@
 										}
 									],
 									"type": "NonQuery",
-									"text": "\nCREATE TABLE Monitor_Pipeline \n( \nID INT IDENTITY(1,1) \n\n,\tPipelineName VARCHAR(255) \n\n,\tRun_Status VARCHAR(255) \n\n,\tPipeline_trigger_time DATETIME \n\n); \n\nINSERT INTO Monitor_Pipeline(PipelineName,Run_Status,Pipeline_trigger_time) VALUES(@PipelineName,'Success',@PipelineTime)"
+									"text": "\nINSERT INTO Monitor_Pipeline(PipelineName,Run_Status,Pipeline_trigger_time) VALUES(@PipelineName,'Success',@PipelineTime)"
 								}
 							],
 							"scriptBlockExecutionTimeout": "02:00:00"
@@ -1160,8 +1160,28 @@
 						"typeProperties": {
 							"scripts": [
 								{
+									"parameters": [
+										{
+											"name": "PipelineName",
+											"type": "String",
+											"value": {
+												"value": "@pipeline().Pipeline",
+												"type": "Expression"
+											},
+											"direction": "Input"
+										},
+										{
+											"name": "PipelineTime",
+											"type": "Datetime",
+											"value": {
+												"value": "@pipeline().TriggerTime",
+												"type": "Expression"
+											},
+											"direction": "Input"
+										}
+									],
 									"type": "NonQuery",
-									"text": "\nCREATE TABLE Log_Error \n\n( \n\nID INT IDENTITY(1,1) \n\n,\tPipelineName VARCHAR(255) \n\n,\tError_Msg VARCHAR(MAX) \n\n,\tPipeline_trigger_time DATETIME \n\n); "
+									"text": "\nCREATE TABLE Log_Error \n\n( \nID INT IDENTITY(1,1) \n,\tPipelineName VARCHAR(255) \n\n,\tError_Msg VARCHAR(MAX) \n\n,\tPipeline_trigger_time DATETIME \n\n); \n\nINSERT INTO Monitor_Pipeline(PipelineName,Run_Status,Pipeline_trigger_time) VALUES(@PipelineName,'Error',@PipelineTime)\n\n"
 								}
 							],
 							"scriptBlockExecutionTimeout": "02:00:00"
