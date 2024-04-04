@@ -1,0 +1,16 @@
+{
+	"name": "tasktable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "logasqldb",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "loga",
+			"table": "customerfemale"
+		}
+	}
+}
