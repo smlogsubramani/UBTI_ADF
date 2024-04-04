@@ -59,12 +59,6 @@
 					},
 					"logasqldb_connectionString": {
 						"value": "[parameters('logasqldb_connectionString')]"
-					},
-					"ADFSERVER_connectionString": {
-						"value": "[parameters('ADFSERVER_connectionString')]"
-					},
-					"TASK3BLOBSTORAGE_connectionString": {
-						"value": "[parameters('TASK3BLOBSTORAGE_connectionString')]"
 					}
 				}
 			},
@@ -83,6 +77,12 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"ADFSERVER_connectionString": {
+						"value": "[parameters('ADFSERVER_connectionString')]"
+					},
+					"TASK3BLOBSTORAGE_connectionString": {
+						"value": "[parameters('TASK3BLOBSTORAGE_connectionString')]"
 					},
 					"restservicetest_properties_typeProperties_url": {
 						"value": "[parameters('restservicetest_properties_typeProperties_url')]"

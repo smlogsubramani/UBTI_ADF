@@ -14,14 +14,6 @@
 		"logasqldb_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'logasqldb'"
-		},
-		"ADFSERVER_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'ADFSERVER'"
-		},
-		"TASK3BLOBSTORAGE_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'TASK3BLOBSTORAGE'"
 		}
 	},
 	"variables": {
@@ -253,6 +245,27 @@
 				"typeProperties": {
 					"schema": "loga",
 					"table": "Apiusers"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/logasqldb')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlTable8')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "logasqldb",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "loga",
+					"table": "monitorpipeline"
 				}
 			},
 			"dependsOn": [
@@ -532,41 +545,24 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ADFSERVER')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"name": "[concat(parameters('factoryName'), '/tasktable')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"annotations": [],
-				"type": "SqlServer",
-				"typeProperties": {
-					"connectionString": "[parameters('ADFSERVER_connectionString')]"
+				"linkedServiceName": {
+					"referenceName": "logasqldb",
+					"type": "LinkedServiceReference"
 				},
-				"connectVia": {
-					"referenceName": "logaintegrationruntime",
-					"type": "IntegrationRuntimeReference"
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "loga",
+					"table": "customerfemale"
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/logaintegrationruntime')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/TASK3BLOBSTORAGE')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('TASK3BLOBSTORAGE_connectionString')]"
-				},
-				"connectVia": {
-					"referenceName": "logaintegrationruntime",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/logaintegrationruntime')]"
+				"[concat(variables('factoryId'), '/linkedServices/logasqldb')]"
 			]
 		}
 	]
